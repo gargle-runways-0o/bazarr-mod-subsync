@@ -10,7 +10,6 @@ RUN apk add --no-cache \
 	git clone https://github.com/cmusphinx/sphinxbase.git && \
 	git clone https://github.com/cmusphinx/pocketsphinx.git && \
 	git clone https://github.com/sc0ty/subsync.git && \
-	chmod +x /subsync && \
 	curl -O https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz && \
 	tar xf ffmpeg-release-amd64-static.tar.xz --directory ffmpeg/ && \
 	rm ffmpeg-release-amd64-static.tar.xz
