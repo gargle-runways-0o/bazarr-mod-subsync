@@ -21,7 +21,6 @@ RUN apk add --no-cache \
 	tar -xf ffmpeg-release-amd64-static.tar.xz && \
 	rm ffmpeg-release-amd64-static.tar.xz && \
 	mv ffmpeg-release-amd64-static ffmpeg
-	chown +x /root-layer/build
 	
 # add local files
 COPY root/ /root-layer/
