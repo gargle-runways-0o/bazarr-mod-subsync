@@ -20,7 +20,7 @@ RUN apk add --no-cache \
 	wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz && \
 	tar -xf ffmpeg-release-amd64-static.tar.xz && \
 	rm ffmpeg-release-amd64-static.tar.xz && \
-	mv ffmpeg-release-amd64-static ffmpeg
+	mv ffmpeg-5.1.1-amd64-static ffmpeg
 	
 # add local files
 COPY root/ /root-layer/
