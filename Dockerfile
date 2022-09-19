@@ -3,7 +3,7 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as buildstage
 
 ## Download dependencies ##
 RUN apk add --no-cache \
-	git
+	git \
 	curl \
 	tar && \
 	mkdir -p /root-layer/build && \
