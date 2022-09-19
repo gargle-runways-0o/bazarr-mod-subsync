@@ -1,5 +1,5 @@
 ## Buildstage ##
-FROM lsiobase/alpine:3.11 as buildstage
+FROM lsiobase/alpine:3.14 as buildstage
 
 ## Download dependencies ##
 RUN apk add --no-cache \
@@ -16,16 +16,14 @@ RUN wget https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha
 	&& tar -xzvf pocketsphinx.tar.gz \
 	&& rm pocketsphinx.tar.gz
 
-ENV FFMPEGVER https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
-
-RUN mkdir /root-layer/build/ffmpeg
-RUN cd /root-layer/build \
-	&& wget "$FFMPEGVER" \
+WORKDIR /root-layer/build/ffmpeg
+WORKDIR /root-layer/build
+RUN curl -O https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
 	&& tar xf ffmpeg-release-amd64-static.tar.xz --directory ffmpeg/ \
 	&& rm ffmpeg-release-amd64-static.tar.xz
 
 ## Download Subsync ##
-RUN git clone -b '0.15' https://github.com/sc0ty/subsync.git /root-layer/app/subsync
+RUN git clone -b '0.17' https://github.com/sc0ty/subsync.git /root-layer/app/subsync
 WORKDIR /root-layer/
 COPY app/ /root-layer/app/
 	
