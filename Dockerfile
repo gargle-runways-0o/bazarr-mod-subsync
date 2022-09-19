@@ -3,8 +3,9 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as buildstage
 
 ## Download dependencies ##
 RUN apk add --no-cache \
+	git
 	curl \
-	git && \
+	tar && \
 	mkdir -p /root-layer/build && \
 	cd /root-layer/build && \
 	git clone https://github.com/cmusphinx/sphinxbase.git && \
