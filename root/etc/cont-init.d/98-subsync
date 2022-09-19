@@ -22,7 +22,9 @@ if [ ! -f /usr/bin/subsync ]; then
 		python3-dev \
 		swig \
 		tar \
-		xz
+		xz \
+		m4 \
+		perl
 
 	python3 -m ensurepip
 	rm -r /usr/lib/python*/ensurepip
