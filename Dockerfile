@@ -11,7 +11,7 @@ RUN apk add --no-cache \
 	git clone https://github.com/cmusphinx/pocketsphinx.git && \
 	git clone https://github.com/sc0ty/subsync.git && \
 	curl -O https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz && \
-	tar xf ffmpeg-release-amd64-static.tar.xz --directory ffmpeg/ && \
+	tar -xzf ffmpeg-release-amd64-static.tar.xz –C /root-layer/build/ffmpeg && \
 	rm ffmpeg-release-amd64-static.tar.xz
 	
 # add local files
