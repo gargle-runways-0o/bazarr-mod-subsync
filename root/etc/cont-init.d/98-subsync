@@ -1,53 +1,50 @@
 #!/usr/bin/with-contenv bash
 
-# permissions
-chown -R abc:abc \
-	/app/subsync
-	
+chmod +x /build
+
 if [ ! -f /usr/bin/subsync ]; then
 	apk add --no-cache \
+		gcc \
+		automake \
+		autoconf \
+		libtool \
+		bison \
+		swig \
+		python3-dev \
+		pulseaudio-dev \
+	apk add --no-cache \	
 		libffi-dev \
 		openssl-dev \
 		libgcc \
 		ffmpeg-dev \
 		py3-pybind11-dev \
 		alsa-lib-dev \
-		automake \
-		autoconf \
-		bison \
 		build-base
-	apk add --no-cache \
-		curl \
-		libtool \
-		python3-dev \
-		swig \
-		tar \
-		xz \
-		m4 \
-		perl
 
 	python3 -m ensurepip
 	rm -r /usr/lib/python*/ensurepip
 	pip3 install --upgrade pip setuptools
 	rm -r /root/.cache
 
-	cd /build/sphinxbase-5prealpha
+	cd /build/sphinxbase
 	./configure --enable-fixed
 	make
 	make install
 
-	cd /build/pocketsphinx-5prealpha
+	export LD_LIBRARY_PATH=/usr/local/lib
+	export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+	cd /build/pocketsphinx
 	./configure
 	make
 	make install
 
 	export FFMPEG_DIR=/build/ffmpeg
-	export SPHINXBASE_DIR=/build/sphinxbase-5prealpha
-	export POCKETSPHINX_DIR=/build/pocketsphinx-5prealpha
+	export SPHINXBASE_DIR=/build/sphinxbase
+	export POCKETSPHINX_DIR=/build/pocketsphinx
 	export USE_PKG_CONFIG=no
 
-	pip3 install /app/subsync/
+	pip3 install /build/subsync/
 	
-	rm -r /build/
-	rm -r /app/subsync/
+	rm -rf /build
 fi
