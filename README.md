@@ -16,7 +16,7 @@ Using [sc0ty/subsync](https://github.com/sc0ty/subsync) v0.17.0.
 
 This is an example [sc0ty/subsync](https://github.com/sc0ty/subsync) CLI command that I use. This changes the name of the subtitle downloaded by bazarr to end in `.original.srt`. If the command is successful, then only the synced subtitle remains, with a naming format that bazarr will recognise. If, for whatever reason, [sc0ty/subsync](https://github.com/sc0ty/subsync) is unable to sync the subtitle, then the subtitle will keep the `.original.srt` extension. I personally blacklist these "unsyncable" subtitles and then delete them.
 
-`mv '{{subtitles}}' '{{subtitles}}'.original.srt && subsync --cli --verbose 1 sync --ref-lang '{{episode_language_code3}}' --sub-file '{{subtitles}}'.original.srt --ref-file '{{episode}}' --out '{{directory}}'/'{{subtitles_language_code2_dot}}'.srt && rm '{{subtitles}}'.original.srt && mv '{{directory}}'/'{{subtitles_language_code2_dot}}'.srt '{{directory}}'/'{{episode_name}}'.'{{subtitles_language_code2_dot}}'.srt`
+`mv '{{subtitles}}' '{{subtitles}}'.original.srt && subsync --cli --verbose 0 sync --ref-lang '{{episode_language_code3}}' --sub-file '{{subtitles}}'.original.srt --ref-file '{{episode}}' --out '{{directory}}'/'{{subtitles_language_code2_dot}}'.srt && rm '{{subtitles}}'.original.srt && mv '{{directory}}'/'{{subtitles_language_code2_dot}}'.srt '{{directory}}'/'{{episode_name}}'.'{{subtitles_language_code2_dot}}'.srt && echo "successful sync!"`
 
 ## Credits
 
