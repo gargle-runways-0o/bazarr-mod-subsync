@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+chmod 777 /root /root/.config
+
 if [ ! -f /usr/bin/subsync ]; then
 	apk update && \
     apk add --no-cache git wget tar && \
@@ -49,4 +51,7 @@ if [ ! -f /usr/bin/subsync ]; then
 	pip3 install /build/subsync/
 	
 	rm -rf /build
+    
+    mkdir -p /root/.config
+    chmod 777 /root /root/.config
 fi
